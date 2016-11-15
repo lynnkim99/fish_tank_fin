@@ -91,8 +91,8 @@
           var bodyColor, centerX, centerY, bodyLength, bodyHeight, speed;
           Stingray() {
             this.bodyColor = color(136,136,136)
-            centerX = 400
-            centerY = 400;
+            centerX = 400;
+            centerY = 600;
             bodyLength = 120;
             bodyHeight = 40;
             speed = 2.5;
@@ -119,9 +119,10 @@
            stroke(bodyColor);
            strokeWeight(4);
            line(centerX-bodyLength/2, centerY,
-           centerX-bodyLength/2-tailWidth, centerY-tailHeight);
+           centerX-bodyLength/2-100, centerY);
            fill(33, 33, 33);
-           ellipse(centerX+bodyLength/4, centerY, bodyHeight/5, bodyHeight/5);
+           ellipse(centerX+bodyLength/4, centerY-10, bodyHeight/5, bodyHeight/5);
+           ellipse(centerX+bodyLength/4, centerY-3, bodyHeight/5, bodyHeight/5);
           }
         }
 
