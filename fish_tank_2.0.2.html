@@ -8,6 +8,7 @@
         
         // Declare and contruct two objects (h1, h2) from the class HorizontalLine
         Fish f = new Fish(100,100,50,30);
+        Stingray s = new Stingray();
         ArrayList<Fish> fishList;
 
         //since these are variables we don't want to ever change in the code, we capitalize them 
@@ -29,6 +30,7 @@
           for(var i = 0; i < numberOfFish; i++) {
             fishList.add(new Fish()); //assuming no parameters in your constructor
           }
+          
         
           frameRate(30); //how many times the draw function is called per second
         
@@ -44,6 +46,7 @@
             Fish currentFish = fishList.get(i); 
             currentFish.moveFish();
           } 
+          s.moveStingray();
         }
 
         class Fish {
@@ -79,6 +82,44 @@
            triangle(centerX-bodyLength/2, centerY,
            centerX-bodyLength/2-tailWidth, centerY-tailHeight,
            centerX-bodyLength/2-tailWidth, centerY+tailHeight);
+           fill(33, 33, 33);
+           ellipse(centerX+bodyLength/4, centerY, bodyHeight/5, bodyHeight/5);
+          }
+        }
+
+        class Stingray {
+          var bodyColor, centerX, centerY, bodyLength, bodyHeight, speed;
+          Stingray() {
+            this.bodyColor = color(136,136,136)
+            centerX = 400
+            centerY = 400;
+            bodyLength = 120;
+            bodyHeight = 40;
+            speed = 2.5;
+          }
+
+          void moveStingray() {
+            update();
+            drawStingray();
+          }
+
+          void update() {
+            centerX += speed;
+            if(centerX > 740) {
+              centerX = -35;
+            }
+          }
+
+          void drawStingray() {
+           noStroke();
+           fill(bodyColor);
+           ellipse(centerX, centerY, bodyLength, bodyHeight);
+           var tailWidth = bodyLength/4;
+           var tailHeight = bodyHeight/2;
+           stroke(bodyColor);
+           strokeWeight(4);
+           line(centerX-bodyLength/2, centerY,
+           centerX-bodyLength/2-tailWidth, centerY-tailHeight);
            fill(33, 33, 33);
            ellipse(centerX+bodyLength/4, centerY, bodyHeight/5, bodyHeight/5);
           }
