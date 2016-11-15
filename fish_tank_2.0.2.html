@@ -1,0 +1,94 @@
+
+<html>
+	<head>
+		<title>FishTank 2.0</title>
+		<script src="http://cloud.github.com/downloads/processing-js/processing-js/processing-1.4.1.min.js"></script>
+		<script type="text/processing" data-processing-target="mycanvas">
+        //Your code goes here 
+        
+        // Declare and contruct two objects (h1, h2) from the class HorizontalLine
+        Fish f = new Fish(100,100,50,30);
+        ArrayList<Fish> fishList;
+
+        //since these are variables we don't want to ever change in the code, we capitalize them 
+        var WINDOW_WIDTH = 700;
+        var WINDOW_HEIGHT = 700; 
+        
+        var BLUE = color(179, 209, 255);
+        //var LEFT = random(100, 600);
+        //var RIGHT = random(100, 550);
+        //var TOP = random(50,70);
+        //var BOTTOM = random(20, 40);
+        
+
+        //This function only runs once at the start of the program
+        void setup() {
+          size(WINDOW_WIDTH, WINDOW_HEIGHT); //sets the size of the window
+          fishList = new ArrayList<Fish>(); //guarantees the only thing in the arrayList is Fish 
+          var numberOfFish = random(5, 10);
+          for(var i = 0; i < numberOfFish; i++) {
+            fishList.add(new Fish()); //assuming no parameters in your constructor
+          }
+        
+          frameRate(30); //how many times the draw function is called per second
+        
+        }
+
+        void draw() {
+          background(BLUE);
+          noStroke();
+          fill(color(230, 235, 202));
+          rect(0,600,700,100);
+
+          for(var i = 0; i < fishList.size(); i++) {
+            Fish currentFish = fishList.get(i); 
+            currentFish.moveFish();
+          } 
+        }
+
+        class Fish {
+          var bodyColor, centerX, centerY, bodyLength, bodyHeight, speed;
+
+          Fish() {
+            this.bodyColor = color(random(0,400),random(0,400),random(0,400));
+            centerX = random(50, 650);
+            centerY = random(50, 550);
+            bodyLength = random(30, 70);
+            bodyHeight = random(20, 50);
+            speed = 2.5;
+          }
+
+          void moveFish() {
+            update();
+            drawFish();
+          }
+
+          void update() {
+            centerX += speed;
+            if(centerX > 740) {
+              centerX = -35;
+            }
+          }
+
+          void drawFish() {
+           noStroke();
+           fill(bodyColor);
+           ellipse(centerX, centerY, bodyLength, bodyHeight);
+           var tailWidth = bodyLength/4;
+           var tailHeight = bodyHeight/2;
+           triangle(centerX-bodyLength/2, centerY,
+           centerX-bodyLength/2-tailWidth, centerY-tailHeight,
+           centerX-bodyLength/2-tailWidth, centerY+tailHeight);
+           fill(33, 33, 33);
+           ellipse(centerX+bodyLength/4, centerY, bodyHeight/5, bodyHeight/5);
+          }
+        }
+
+        </script> 
+    </head>
+    
+    <body>
+		<canvas id="mycanvas"></canvas>
+	</body>
+</html>
+    
