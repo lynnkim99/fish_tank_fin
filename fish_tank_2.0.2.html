@@ -9,6 +9,7 @@
         // Declare and contruct two objects (h1, h2) from the class HorizontalLine
         Fish f = new Fish(100,100,50,30);
         Stingray s = new Stingray();
+        Sanddollar a = new Sanddollar();
         ArrayList<Fish> fishList;
 
         //since these are variables we don't want to ever change in the code, we capitalize them 
@@ -47,6 +48,7 @@
             currentFish.moveFish();
           } 
           s.moveStingray();
+          a.moveSanddollar();
         }
 
         class Fish {
@@ -68,7 +70,7 @@
 
           void update() {
             centerX += speed;
-            if(centerX > 740) {
+            if(centerX > 780) {
               centerX = -35;
             }
           }
@@ -95,7 +97,7 @@
             centerY = 600;
             bodyLength = 120;
             bodyHeight = 40;
-            speed = 2.5;
+            speed = -2;
           }
 
           void moveStingray() {
@@ -105,8 +107,8 @@
 
           void update() {
             centerX += speed;
-            if(centerX > 740) {
-              centerX = -35;
+            if(centerX < -170) {
+              centerX = 855;
             }
           }
 
@@ -118,11 +120,57 @@
            var tailHeight = bodyHeight/2;
            stroke(bodyColor);
            strokeWeight(4);
-           line(centerX-bodyLength/2, centerY,
-           centerX-bodyLength/2-100, centerY);
+           line(centerX+bodyLength/2, centerY,
+           centerX+bodyLength/2+100, centerY);
            fill(33, 33, 33);
-           ellipse(centerX+bodyLength/4, centerY-10, bodyHeight/5, bodyHeight/5);
-           ellipse(centerX+bodyLength/4, centerY-3, bodyHeight/5, bodyHeight/5);
+           ellipse(centerX-bodyLength/4, centerY-10, bodyHeight/5, bodyHeight/5);
+           ellipse(centerX-bodyLength/4, centerY-3, bodyHeight/5, bodyHeight/5);
+          }
+        }
+
+        class Sanddollar {
+          var bodyColor, centerX, centerY, size, speed;
+          Sanddollar() {
+            this.bodyColor = color(254, 107, 107)
+            centerX = random(50, 700);
+            centerY = random(650,700);
+            size = 30;
+            speed = .25;
+          }
+
+           void moveSanddollar() {
+            update();
+            drawSanddollar();
+          }
+
+          void update() {
+            centerX += speed;
+            if(centerX > 750) {
+              centerX = -50;
+            }
+          }
+
+          void drawSanddollar() {
+           noStroke();
+           fill(bodyColor);
+           ellipse(centerX, centerY, size, size);
+           fill(33, 33, 33);
+           ellipse(centerX, centerY, size/5, size/5);
+           ellipse(centerX+3, centerY-2, size/10, size/10);
+           ellipse(centerX+6, centerY-4, size/10, size/10);
+           ellipse(centerX+9, centerY-6, size/10, size/10);
+           ellipse(centerX-3, centerY-2, size/10, size/10);
+           ellipse(centerX-6, centerY-4, size/10, size/10);
+           ellipse(centerX-9, centerY-6, size/10, size/10);
+           ellipse(centerX-3, centerY+3, size/10, size/10);
+           ellipse(centerX-6, centerY+6, size/10, size/10);
+           ellipse(centerX-9, centerY+9, size/10, size/10);
+           ellipse(centerX+3, centerY+3, size/10, size/10);
+           ellipse(centerX+6, centerY+6, size/10, size/10);
+           ellipse(centerX+9, centerY+9, size/10, size/10);
+           ellipse(centerX, centerY-4, size/10, size/10);
+           ellipse(centerX, centerY-8, size/10, size/10);
+           ellipse(centerX, centerY-12, size/10, size/10);
           }
         }
 
