@@ -9,8 +9,8 @@
         // Declare and contruct two objects (h1, h2) from the class HorizontalLine
         Fish f = new Fish(100,100,50,30);
         Stingray s = new Stingray();
-        Sanddollar a = new Sanddollar();
         ArrayList<Fish> fishList;
+        ArrayList<Sanddollar> sandList;
 
         //since these are variables we don't want to ever change in the code, we capitalize them 
         var WINDOW_WIDTH = 700;
@@ -32,6 +32,11 @@
             fishList.add(new Fish()); //assuming no parameters in your constructor
           }
           
+          sandList = new ArrayList<Sanddollar>(); //guarantees the only thing in the arrayList is Fish 
+          var numberOfSand = random(2, 5);
+          for(var i = 0; i < numberOfSand; i++) {
+            sandList.add(new Sanddollar()); //assuming no parameters in your constructor
+          }
         
           frameRate(30); //how many times the draw function is called per second
         
@@ -48,7 +53,11 @@
             currentFish.moveFish();
           } 
           s.moveStingray();
-          a.moveSanddollar();
+
+          for(var i = 0; i < sandList.size(); i++) {
+            Sanddollar currentSand = sandList.get(i); 
+            currentSand.moveSanddollar();
+          } 
         }
 
         class Fish {
@@ -133,7 +142,7 @@
           Sanddollar() {
             this.bodyColor = color(169, 116, 219);
             centerX = random(50, 700);
-            centerY = random(650,700);
+            centerY = random(620,680);
             size = 30;
             speed = .25;
           }
