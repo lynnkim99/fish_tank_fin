@@ -33,7 +33,7 @@
           }
           
           sandList = new ArrayList<Sanddollar>(); //guarantees the only thing in the arrayList is Fish 
-          var numberOfSand = random(2, 5);
+          var numberOfSand = random(1, 5);
           for(var i = 0; i < numberOfSand; i++) {
             sandList.add(new Sanddollar()); //assuming no parameters in your constructor
           }
@@ -52,12 +52,13 @@
             Fish currentFish = fishList.get(i); 
             currentFish.moveFish();
           } 
-          s.moveStingray();
-
+          
           for(var i = 0; i < sandList.size(); i++) {
             Sanddollar currentSand = sandList.get(i); 
             currentSand.moveSanddollar();
           } 
+          s.moveStingray();
+
         }
 
         class Fish {
