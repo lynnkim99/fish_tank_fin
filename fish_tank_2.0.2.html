@@ -33,7 +33,7 @@
           }
           
         
-          frameRate(30); //how many times the draw function is called per second
+          frameRate(100); //how many times the draw function is called per second
         
         }
 
@@ -60,7 +60,7 @@
             centerY = random(50, 550);
             bodyLength = random(30, 70);
             bodyHeight = random(20, 50);
-            speed = 2.5;
+            speed = 1;
           }
 
           void moveFish() {
@@ -82,8 +82,8 @@
            var tailWidth = bodyLength/4;
            var tailHeight = bodyHeight/2;
            triangle(centerX-bodyLength/2, centerY,
-           centerX-bodyLength/2-tailWidth, centerY-tailHeight,
-           centerX-bodyLength/2-tailWidth, centerY+tailHeight);
+           centerX-bodyLength/2-tailWidth, centerY-tailHeight+random(-3,3),
+           centerX-bodyLength/2-tailWidth, centerY+tailHeight+random(-3,3));
            fill(33, 33, 33);
            ellipse(centerX+bodyLength/4, centerY, bodyHeight/5, bodyHeight/5);
           }
@@ -97,7 +97,7 @@
             centerY = 600;
             bodyLength = 120;
             bodyHeight = 40;
-            speed = -2;
+            speed = -.5;
           }
 
           void moveStingray() {
@@ -121,7 +121,7 @@
            stroke(bodyColor);
            strokeWeight(4);
            line(centerX+bodyLength/2, centerY,
-           centerX+bodyLength/2+100, centerY);
+           centerX+bodyLength/2+100, centerY+random(-5,5));
            fill(33, 33, 33);
            ellipse(centerX-bodyLength/4, centerY-10, bodyHeight/5, bodyHeight/5);
            ellipse(centerX-bodyLength/4, centerY-3, bodyHeight/5, bodyHeight/5);
@@ -133,9 +133,9 @@
           Sanddollar() {
             this.bodyColor = color(254, 107, 107)
             centerX = random(50, 700);
-            centerY = random(650,700);
+            centerY = random(620,670);
             size = 30;
-            speed = .25;
+            speed = .1;
           }
 
            void moveSanddollar() {
