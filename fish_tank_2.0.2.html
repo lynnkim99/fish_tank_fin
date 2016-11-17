@@ -6,6 +6,7 @@
 		<script type="text/processing" data-processing-target="mycanvas">
         //Your code goes here 
         /* @pjs preload="seaweed.png"; */
+        /* @pjs preload="coral.png"; */
         
         // Declare and contruct two objects (h1, h2) from the class HorizontalLine
         Fish f = new Fish(100,100,50,30);
@@ -13,6 +14,7 @@
         ArrayList<Fish> fishList;
         ArrayList<Sanddollar> sandList;
         PImage b;
+        PImage a;
 
         //since these are variables we don't want to ever change in the code, we capitalize them 
         var WINDOW_WIDTH = 700;
@@ -30,6 +32,7 @@
           size(WINDOW_WIDTH, WINDOW_HEIGHT); //sets the size of the window
 
           b = loadImage("seaweed.png");
+          a = loadImage("coral.png");
 
           fishList = new ArrayList<Fish>(); //guarantees the only thing in the arrayList is Fish 
           var numberOfFish = random(5, 10);
@@ -54,6 +57,7 @@
           fill(color(230, 235, 202));
           rect(0,600,700,100);
           image(b, 330, 320, 350, 350);
+          image(a, 0, 370, 250, 250);
 
           for(var i = 0; i < fishList.size(); i++) {
             Fish currentFish = fishList.get(i); 
