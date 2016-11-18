@@ -68,21 +68,21 @@
           image(c, 0, 0);
           noStroke();
           image(d, 0, 0);
-          image(b, 330, 320, 350, 350);
           image(a, 0, 370, 250, 250);
           image(e, 400, 570, 120, 120);
-          image(f, 180, 440, 100, 200);
+          
 
           for(var i = 0; i < fishList.size(); i++) {
             Fish currentFish = fishList.get(i); 
             currentFish.moveFish();
           } 
-          
+          s.moveStingray();
+          image(b, 330, 320, 350, 350);
+          image(f, 180, 440, 100, 200);
           for(var i = 0; i < sandList.size(); i++) {
             Sanddollar currentSand = sandList.get(i); 
             currentSand.moveSanddollar();
           } 
-          s.moveStingray();
 
         }
 
