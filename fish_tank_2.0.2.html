@@ -5,12 +5,24 @@
 		<script src="http://cloud.github.com/downloads/processing-js/processing-js/processing-1.4.1.min.js"></script>
 		<script type="text/processing" data-processing-target="mycanvas">
         //Your code goes here 
+        /* @pjs preload="coral.png"; */
+        /* @pjs preload="seaweed.png"; */
+        /* @pjs preload="background.jpg"; */
+        /* @pjs preload="sand.png"; */
+        /* @pjs preload="starfish.png"; */
+        /* @pjs preload="coral2.png"; */
         
         // Declare and contruct two objects (h1, h2) from the class HorizontalLine
         Fish f = new Fish(100,100,50,30);
         Stingray s = new Stingray();
         ArrayList<Fish> fishList;
         ArrayList<Sanddollar> sandList;
+        PImage a;
+        PImage b;
+        PImage c;
+        PImage d;
+        PImage e;
+        PImage f;
 
         //since these are variables we don't want to ever change in the code, we capitalize them 
         var WINDOW_WIDTH = 700;
@@ -26,6 +38,14 @@
         //This function only runs once at the start of the program
         void setup() {
           size(WINDOW_WIDTH, WINDOW_HEIGHT); //sets the size of the window
+          
+          a = loadImage("coral.png");
+          b = loadImage("seaweed.png");
+          c = loadImage("background.jpg");
+          d = loadImage("sand.png");
+          e = loadImage("starfish.png");
+          f = loadImage("coral2.png")
+
           fishList = new ArrayList<Fish>(); //guarantees the only thing in the arrayList is Fish 
           var numberOfFish = random(5, 10);
           for(var i = 0; i < numberOfFish; i++) {
@@ -36,6 +56,7 @@
           var numberOfSand = random(1, 5);
           for(var i = 0; i < numberOfSand; i++) {
             sandList.add(new Sanddollar()); //assuming no parameters in your constructor
+            
           }
         
           frameRate(100); //how many times the draw function is called per second
@@ -44,9 +65,13 @@
 
         void draw() {
           background(BLUE);
+          image(c, 0, 0);
           noStroke();
-          fill(color(230, 235, 202));
-          rect(0,600,700,100);
+          image(d, 0, 0);
+          image(b, 330, 320, 350, 350);
+          image(a, 0, 370, 250, 250);
+          image(e, 400, 570, 120, 120);
+          image(f, 180, 440, 100, 200);
 
           for(var i = 0; i < fishList.size(); i++) {
             Fish currentFish = fishList.get(i); 
